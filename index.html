@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erin Devine — Stripping the Earth, One Layer at a Time</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #f0e6d3;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, #1a0a1e 0%, #0a0a0a 100%);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(180, 50, 120, 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 50%, rgba(120, 50, 180, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #ff6b9d, #c44dff, #6b5ce7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .hero .tagline {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    color: #b8a9c9;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(180, 50, 120, 0.2);
+    border: 1px solid rgba(180, 50, 120, 0.4);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ff6b9d;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    color: white;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(196, 77, 255, 0.4);
+  }
+
+  .section {
+    padding: 5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .service-card {
+    background: linear-gradient(135deg, rgba(180, 50, 120, 0.1), rgba(120, 50, 180, 0.1));
+    border: 1px solid rgba(180, 50, 120, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(180, 50, 120, 0.5);
+  }
+
+  .service-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #ff6b9d;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: #b8a9c9;
+    line-height: 1.6;
+  }
+
+  .about-box {
+    background: linear-gradient(135deg, rgba(180, 50, 120, 0.08), rgba(120, 50, 180, 0.08));
+    border: 1px solid rgba(180, 50, 120, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+  }
+
+  .about-box p {
+    line-height: 1.8;
+    color: #d4c5e2;
+    font-size: 1rem;
+  }
+
+  .reviews {
+    margin-top: 2rem;
+  }
+
+  .review {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #c44dff;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .review .stars {
+    color: #ff6b9d;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .review p {
+    color: #b8a9c9;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .review .author {
+    color: #ff6b9d;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+  }
+
+  .pricing-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(180, 50, 120, 0.15);
+    color: #d4c5e2;
+  }
+
+  .pricing-table td:first-child {
+    color: #ff6b9d;
+    font-weight: 600;
+  }
+
+  .pricing-table td:last-child {
+    text-align: right;
+    color: #b8a9c9;
+  }
+
+  .disclaimer {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #5a4d6b;
+    font-size: 0.75rem;
+    border-top: 1px solid rgba(180, 50, 120, 0.1);
+  }
+
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 1.5rem 0;
+    background: linear-gradient(90deg, rgba(180, 50, 120, 0.1), rgba(120, 50, 180, 0.1));
+    border-top: 1px solid rgba(180, 50, 120, 0.2);
+    border-bottom: 1px solid rgba(180, 50, 120, 0.2);
+  }
+
+  .marquee-inner {
+    display: inline-block;
+    animation: scroll 20s linear infinite;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #ff6b9d;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin: 3rem 0;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat .label {
+    font-size: 0.8rem;
+    color: #5a4d6b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.3rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: #3a2d4b;
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Licensed & Insured Geologist</div>
+  <h1>Erin Devine</h1>
+  <p class="tagline">I strip the earth. Every. Single. Day.<br>Now I'm taking those skills to a new audience.</p>
+  <a href="#services" class="cta-button">See What I Can Do</a>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-inner">
+    ★ CLEAVAGE SPECIALIST ★ SEDIMENTARY STRIPPING ★ METAMORPHIC MAKEOVERS ★ MAGMATIC ENERGY ★ TECTONIC Twerking ★ FOSSILIZED EXOTICA ★ ROCK HARD PERFORMANCE ★ DEEP EARTH EXPOSURE ★ STRATIGRAPHIC PEEL ★ LITHOSPHERIC LASHES ★
+    ★ CLEAVAGE SPECIALIST ★ SEDIMENTARY STRIPPING ★ METAMORPHIC MAKEOVERS ★ MAGMATIC ENERGY ★ TECTONIC Twerking ★ FOSSILIZED EXOTICA ★ ROCK HARD PERFORMANCE ★ DEEP EARTH EXPOSURE ★ STRATIGRAPHIC PEEL ★ LITHOSPHERIC LASHES ★
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="number">15+</div>
+    <div class="label">Years Exposing Rock</div>
+  </div>
+  <div class="stat">
+    <div class="number">MS</div>
+    <div class="label">Marine Science & Geology</div>
+  </div>
+  <div class="stat">
+    <div class="number">∞</div>
+    <div class="label">Cleavage Studied</div>
+  </div>
+  <div class="stat">
+    <div class="number">100%</div>
+    <div class="label">Field-Tested</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <h2>Services</h2>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="icon">🪨</div>
+      <h3>Cleavage Analysis</h3>
+      <p>15 years of professionally studying natural cleavage patterns means I know exactly how to work a room — and how to appreciate a good split.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🌋</div>
+      <h3>Magma Energy</h3>
+      <p>I bring the heat. Literally. I've worked in volcanic terrain. If I can handle basalt flows, I can handle any crowd.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🏔️</div>
+      <h3>Tectonic Twerking</h3>
+      <p>Plate tectonics taught me everything I need to know about movement, rhythm, and the power of friction.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🦴</div>
+      <h3>Fossilized Exotica</h3>
+      <p>Patience is key. I've spent weeks brushing sand off a 200-million-year-old trilobite. I can work a pole with that kind of dedication.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">💎</div>
+      <h3>Hard Rock Stripping</h3>
+      <p>Metamorphic rocks withstand extreme pressure and heat. So do I. I'm literally built for this industry.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🌊</div>
+      <h3>Marine Science Special</h3>
+      <p>UCSB Marine Science & Geology degree. I can do this underwater if that's your thing. Tide charts included.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <h2>About Me</h2>
+  <div class="about-box">
+    <p>
+      What's a girl gotta do to get a break in this town? Literally — I work in fault lines for a living.
+    </p>
+    <br>
+    <p>
+      I've got an MS in Marine Science and Geology from UCSB, I've worked at Parsons, and I'm currently at Novaterra Biological Consulting where I coordinate projects that expose the truth about the earth. I've spent my career taking things apart layer by layer, documenting what's underneath, and making sure nobody cuts corners on the important stuff.
+    </p>
+    <br>
+    <p>
+      But let's be real — I've been stripping rock formations since 2003. It's the same skill set. Just different rocks. And a different audience. And honestly? The audience here is way more appreciative.
+    </p>
+    <br>
+    <p>
+      <strong>Education:</strong> UC Santa Barbara — MS Marine Science & Geology (2003–2006)<br>
+      <strong>Experience:</strong> Parsons, Novaterra Biological Consulting<br>
+      <strong>Specialties:</strong> Geology, Groundwater, Environmental Permitting, Stratigraphy, Sedimentology<br>
+      <strong>Availability:</strong> Weekends, nights, and any event that needs a real professional
+    </p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+  <h2>Rates</h2>
+  <table class="pricing-table">
+    <tr><td>Single Dance (5 min)</td><td>One rock star performance</td></tr>
+    <tr><td>Cleavage Special (10 min)</td><td>Layer-by-layer exposure</td></tr>
+    <tr><td>Full Stratigraphic Set (20 min)</td><td>Complete geological survey</td></tr>
+    <tr><td>Private Party</td><td>Custom tectonic experience</td></tr>
+    <tr><td>Corporate Event</td><td>Team building through geological appreciation</td></tr>
+    <tr><td>Bachelorette Package</td><td>The last time she'll ever need a real geologist</td></tr>
+  </table>
+</section>
+
+<!-- REVIEWS -->
+<section class="section">
+  <h2>What People Say</h2>
+  <div class="reviews">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"I've seen a lot of field sites, but nothing exposed me like Erin's performance."</p>
+      <div class="author">— Anonymous Site Supervisor</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"She analyzed my party's cleavage situation in under 3 minutes. 10/10 would recommend."</p>
+      <div class="author">— Happy Client, Bachelorette Party</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"Finally, someone who understands that the best things come in layers."</p>
+      <div class="author">— Former Colleague, Now Fan</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"I came for the geology. I stayed for the tectonic twerking. I left with a new perspective on sedimentary rock."</p>
+      <div class="author">— Confessed Party Guest</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="text-align: center; padding-top: 3rem;">
+  <h2>Book Now</h2>
+  <p style="color: #b8a9c9; margin-bottom: 2rem; font-size: 1.1rem;">
+    Don't let your next event go unexplored.<br>
+    Erin brings the science. You bring the stage.
+  </p>
+  <a href="#" class="cta-button">🪨 Book Erin Today 🪨</a>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <p>
+    This is a joke website created for entertainment purposes. Erin Devine is a real geologist who deserves respect for her actual professional work.
+    No actual stripping services are offered or implied. Please tip your real geologists — they're the real rock stars.
+    <br><br>
+    Made with 💜 and a hammer by Erin's friend Steven
+  </p>
+</div>
+
+<footer>
+  © 2026 Erin Devine Geologic Stripping Services™ — All Rights Reserved (Just Kidding, Erin)
+</footer>
+
+</body>
+</html>

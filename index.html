@@ -3,452 +3,626 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Erin Devine — Stripping the Earth, One Layer at a Time</title>
+<title>DeVine — Geologic Exposure & Private Engagements</title>
+<meta name="description" content="Erin DeVine, M.S. Principal geologist. UCSB-trained. El Dorado County. By appointment only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
+  :root {
+    --bg: #f3eee4;
+    --paper: #fffaf2;
+    --ink: #1b1712;
+    --muted: #6f675c;
+    --line: rgba(154, 123, 79, 0.28);
+    --gold: #9a7b4f;
+    --gold-deep: #7a5e38;
+    --deep: #241e16;
+  }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
-    font-family: 'Inter', sans-serif;
-    background: #0a0a0a;
-    color: #f0e6d3;
-    overflow-x: hidden;
+    font-family: Outfit, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
   }
 
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(180deg, #1a0a1e 0%, #0a0a0a 100%);
-    padding: 2rem;
-    position: relative;
-  }
+  a { color: inherit; }
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-      radial-gradient(ellipse at 20% 50%, rgba(180, 50, 120, 0.15) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 50%, rgba(120, 50, 180, 0.15) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    font-weight: 900;
-    background: linear-gradient(135deg, #ff6b9d, #c44dff, #6b5ce7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-
-  .hero .tagline {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-    font-weight: 300;
-    color: #b8a9c9;
-    margin-bottom: 2rem;
-    max-width: 600px;
-  }
-
-  .badge {
-    display: inline-block;
-    background: rgba(180, 50, 120, 0.2);
-    border: 1px solid rgba(180, 50, 120, 0.4);
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #ff6b9d;
-    margin-bottom: 2rem;
-  }
-
-  .cta-button {
-    display: inline-block;
-    background: linear-gradient(135deg, #ff6b9d, #c44dff);
-    color: white;
-    padding: 1rem 3rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: none;
-    cursor: pointer;
-  }
-
-  .cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(196, 77, 255, 0.4);
-  }
-
-  .section {
-    padding: 5rem 2rem;
-    max-width: 900px;
+  .wrap {
+    width: min(1080px, calc(100% - 2.4rem));
     margin: 0 auto;
   }
 
-  .section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    margin-bottom: 2rem;
-    background: linear-gradient(135deg, #ff6b9d, #c44dff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(243, 238, 228, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
   }
 
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 72px;
   }
 
-  .service-card {
-    background: linear-gradient(135deg, rgba(180, 50, 120, 0.1), rgba(120, 50, 180, 0.1));
-    border: 1px solid rgba(180, 50, 120, 0.2);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-
-  .service-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(180, 50, 120, 0.5);
-  }
-
-  .service-card .icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .service-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: #ff6b9d;
-  }
-
-  .service-card p {
-    font-size: 0.9rem;
-    color: #b8a9c9;
-    line-height: 1.6;
-  }
-
-  .about-box {
-    background: linear-gradient(135deg, rgba(180, 50, 120, 0.08), rgba(120, 50, 180, 0.08));
-    border: 1px solid rgba(180, 50, 120, 0.2);
-    border-radius: 16px;
-    padding: 2.5rem;
-    margin: 2rem 0;
-  }
-
-  .about-box p {
-    line-height: 1.8;
-    color: #d4c5e2;
-    font-size: 1rem;
-  }
-
-  .reviews {
-    margin-top: 2rem;
-  }
-
-  .review {
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 3px solid #c44dff;
-    padding: 1.5rem 2rem;
-    margin-bottom: 1.5rem;
-    border-radius: 0 12px 12px 0;
-  }
-
-  .review .stars {
-    color: #ff6b9d;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .review p {
-    color: #b8a9c9;
-    font-style: italic;
-    line-height: 1.6;
-  }
-
-  .review .author {
-    color: #ff6b9d;
-    font-style: normal;
-    font-weight: 600;
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-  }
-
-  .pricing-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 2rem;
-  }
-
-  .pricing-table td {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid rgba(180, 50, 120, 0.15);
-    color: #d4c5e2;
-  }
-
-  .pricing-table td:first-child {
-    color: #ff6b9d;
+  .wordmark {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
     font-weight: 600;
   }
 
-  .pricing-table td:last-child {
-    text-align: right;
-    color: #b8a9c9;
+  .nav-links {
+    display: flex;
+    gap: 1.4rem;
+    list-style: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
-  .disclaimer {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: #5a4d6b;
-    font-size: 0.75rem;
-    border-top: 1px solid rgba(180, 50, 120, 0.1);
-  }
+  .nav-links a { text-decoration: none; }
+  .nav-links a:hover { color: var(--ink); }
 
-  .marquee {
-    overflow: hidden;
+  .nav-cta {
+    border: 1px solid var(--gold);
+    color: var(--gold-deep);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.55rem 0.9rem;
     white-space: nowrap;
-    padding: 1.5rem 0;
-    background: linear-gradient(90deg, rgba(180, 50, 120, 0.1), rgba(120, 50, 180, 0.1));
-    border-top: 1px solid rgba(180, 50, 120, 0.2);
-    border-bottom: 1px solid rgba(180, 50, 120, 0.2);
   }
 
-  .marquee-inner {
-    display: inline-block;
-    animation: scroll 20s linear infinite;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: #ff6b9d;
+  .nav-cta:hover { background: var(--deep); color: var(--paper); border-color: var(--deep); }
+
+  .hero {
+    padding: 4.5rem 0 3.5rem;
+    border-bottom: 1px solid var(--line);
   }
 
-  @keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+  .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: clamp(3.4rem, 9vw, 7.2rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 span {
+    display: block;
+    font-style: italic;
+    font-size: 0.42em;
+    letter-spacing: 0.04em;
+    color: var(--gold-deep);
+    margin-top: 0.45rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 2.5rem;
+    align-items: end;
+    margin-top: 2rem;
+  }
+
+  .lede {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    font-weight: 500;
+    line-height: 1.35;
+    max-width: 36rem;
+  }
+
+  .hero-meta {
+    font-size: 0.86rem;
+    color: var(--muted);
+    display: grid;
+    gap: 0.45rem;
+    padding-bottom: 0.2rem;
+  }
+
+  .hero-meta strong { color: var(--ink); font-weight: 500; }
+
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0;
+  }
+
+  section { padding: 4.2rem 0; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 0.7rem;
+  }
+
+  h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+
+  .intro {
+    max-width: 40rem;
+    color: var(--muted);
+    font-size: 1.02rem;
   }
 
   .stats {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 2.4rem;
   }
 
   .stat {
-    text-align: center;
+    background: var(--paper);
+    padding: 1.4rem 1.2rem;
   }
 
-  .stat .number {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #ff6b9d, #c44dff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .stat b {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 600;
   }
 
-  .stat .label {
-    font-size: 0.8rem;
-    color: #5a4d6b;
+  .stat span {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 0.3rem;
+    color: var(--muted);
   }
 
-  footer {
+  .practice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 2.2rem;
+  }
+
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 1.6rem 1.5rem 1.45rem;
+  }
+
+  .card .code {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 0.55rem;
+  }
+
+  .card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    margin-bottom: 0.55rem;
+  }
+
+  .card p { color: var(--muted); font-size: 0.95rem; }
+
+  .letter {
+    background: var(--deep);
+    color: #efe6d6;
+    padding: 3.2rem 0;
+  }
+
+  .letter .wrap { width: min(760px, calc(100% - 2.4rem)); }
+
+  .letter h2 { color: #fffaf2; }
+
+  .letter p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.28rem;
+    line-height: 1.55;
+    margin-bottom: 1.1rem;
+  }
+
+  .signoff {
+    margin-top: 1.6rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    color: #cbb894;
+  }
+
+  .signoff b {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.4rem;
+    color: #fffaf2;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .cv {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0.7rem 1.5rem;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .cv dt {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    padding-top: 0.2rem;
+  }
+
+  .cv dd { color: var(--ink); }
+
+  .retainers {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.8rem;
+  }
+
+  .retainers th, .retainers td {
+    text-align: left;
+    padding: 1rem 0.4rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  .retainers th {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+
+  .retainers td:last-child, .retainers th:last-child { text-align: right; }
+
+  .retainers .name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .retainers .desc { color: var(--muted); font-size: 0.9rem; padding-top: 0.15rem; }
+
+  .quotes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  blockquote {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 1.5rem;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.28rem;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  blockquote footer {
+    font-family: Outfit, sans-serif;
+    font-style: normal;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.9rem;
+  }
+
+  .book {
     text-align: center;
-    padding: 2rem;
-    color: #3a2d4b;
-    font-size: 0.8rem;
+    padding: 4.5rem 0 5rem;
+  }
+
+  .book p {
+    color: var(--muted);
+    max-width: 34rem;
+    margin: 0 auto 1.6rem;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--deep);
+    color: var(--paper);
+    text-decoration: none;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    padding: 0.95rem 1.4rem;
+  }
+
+  .btn:hover { background: var(--gold-deep); }
+
+  .fine {
+    border-top: 1px solid var(--line);
+    padding: 2rem 0 2.6rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  footer.site {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 2.2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  @media (max-width: 820px) {
+    .nav-links { display: none; }
+    .hero-grid, .practice, .quotes, .stats, .cv { grid-template-columns: 1fr; }
+    .stats { gap: 0; border: 0; background: transparent; }
+    .stat { border: 1px solid var(--line); border-bottom: 0; }
+    .stat:last-child { border-bottom: 1px solid var(--line); }
   }
 </style>
 </head>
 <body>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="badge">Licensed & Insured Geologist</div>
-  <h1>Erin Devine</h1>
-  <p class="tagline">I strip the earth. Every. Single. Day.<br>Now I'm taking those skills to a new audience.</p>
-  <a href="#services" class="cta-button">See What I Can Do</a>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee-inner">
-    ★ CLEAVAGE SPECIALIST ★ SEDIMENTARY STRIPPING ★ METAMORPHIC MAKEOVERS ★ MAGMATIC ENERGY ★ TECTONIC Twerking ★ FOSSILIZED EXOTICA ★ ROCK HARD PERFORMANCE ★ DEEP EARTH EXPOSURE ★ STRATIGRAPHIC PEEL ★ LITHOSPHERIC LASHES ★
-    ★ CLEAVAGE SPECIALIST ★ SEDIMENTARY STRIPPING ★ METAMORPHIC MAKEOVERS ★ MAGMATIC ENERGY ★ TECTONIC Twerking ★ FOSSILIZED EXOTICA ★ ROCK HARD PERFORMANCE ★ DEEP EARTH EXPOSURE ★ STRATIGRAPHIC PEEL ★ LITHOSPHERIC LASHES ★
-  </div>
-</div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat">
-    <div class="number">15+</div>
-    <div class="label">Years Exposing Rock</div>
-  </div>
-  <div class="stat">
-    <div class="number">MS</div>
-    <div class="label">Marine Science & Geology</div>
-  </div>
-  <div class="stat">
-    <div class="number">∞</div>
-    <div class="label">Cleavage Studied</div>
-  </div>
-  <div class="stat">
-    <div class="number">100%</div>
-    <div class="label">Field-Tested</div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section class="section" id="services">
-  <h2>Services</h2>
-  <div class="services-grid">
-
-    <div class="service-card">
-      <div class="icon">🪨</div>
-      <h3>Cleavage Analysis</h3>
-      <p>15 years of professionally studying natural cleavage patterns means I know exactly how to work a room — and how to appreciate a good split.</p>
+  <header>
+    <div class="wrap nav">
+      <a class="wordmark" href="#top">DeVine</a>
+      <ul class="nav-links">
+        <li><a href="#practice">Practice</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#retainers">Retainers</a></li>
+        <li><a href="#remarks">Remarks</a></li>
+      </ul>
+      <a class="nav-cta" href="#book">Request engagement</a>
     </div>
+  </header>
 
-    <div class="service-card">
-      <div class="icon">🌋</div>
-      <h3>Magma Energy</h3>
-      <p>I bring the heat. Literally. I've worked in volcanic terrain. If I can handle basalt flows, I can handle any crowd.</p>
-    </div>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <p class="kicker">El Dorado County · By appointment only · Est. 2003</p>
+        <h1>
+          Erin DeVine
+          <span>Principal Geologist. Licensed to expose.</span>
+        </h1>
+        <div class="hero-grid">
+          <p class="lede">I have spent my career removing overburden, logging what lies beneath, and presenting the findings with complete professional composure. The rock is optional. The cleavage is not.</p>
+          <div class="hero-meta">
+            <div><strong>M.S.</strong> Marine Science & Geology, UC Santa Barbara</div>
+            <div><strong>Practice</strong> Geologic exposure, private engagements</div>
+            <div><strong>Day job</strong> Project Control Coordinator, Novaterra</div>
+            <div><strong>After hours</strong> Project control, but make it personal</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="service-card">
-      <div class="icon">🏔️</div>
-      <h3>Tectonic Twerking</h3>
-      <p>Plate tectonics taught me everything I need to know about movement, rhythm, and the power of friction.</p>
-    </div>
+    <div class="gold-rule"></div>
 
-    <div class="service-card">
-      <div class="icon">🦴</div>
-      <h3>Fossilized Exotica</h3>
-      <p>Patience is key. I've spent weeks brushing sand off a 200-million-year-old trilobite. I can work a pole with that kind of dedication.</p>
-    </div>
+    <section>
+      <div class="wrap">
+        <p class="section-label">At a glance</p>
+        <h2>Twenty years of field work.<br>Hard hat optional now.</h2>
+        <p class="intro">Ms. DeVine holds an M.S. from UCSB, has logged formations for Parsons and Conestoga-Rovers, kept El Dorado County’s paperwork honest, and currently keeps Novaterra’s projects on schedule. She is, in short, extremely good at taking things down to the competent layer.</p>
+        <div class="stats">
+          <div class="stat"><b>2003</b><span>First began stripping rock</span></div>
+          <div class="stat"><b>M.S.</b><span>UCSB Earth & Ocean</span></div>
+          <div class="stat"><b>∞</b><span>Cleavage planes reviewed</span></div>
+          <div class="stat"><b>100%</b><span>Peer-reviewed presence</span></div>
+        </div>
+      </div>
+    </section>
 
-    <div class="service-card">
-      <div class="icon">💎</div>
-      <h3>Hard Rock Stripping</h3>
-      <p>Metamorphic rocks withstand extreme pressure and heat. So do I. I'm literally built for this industry.</p>
-    </div>
+    <section id="practice">
+      <div class="wrap">
+        <p class="section-label">Practice areas</p>
+        <h2>Services rendered with scientific rigor.</h2>
+        <p class="intro">All work is performed to a standard suitable for agency submittal, bachelor-party submittal, or both.</p>
+        <div class="practice">
+          <article class="card">
+            <p class="code">DEV-01 · Structural</p>
+            <h3>Cleavage Characterization</h3>
+            <p>Preferred orientation. Maximum exposure. Stereonet upon request. If you came here for a cleavage joke, congratulations: you are now on the official boring log.</p>
+          </article>
+          <article class="card">
+            <p class="code">DEV-02 · Site assessment</p>
+            <h3>Phase I / II / III</h3>
+            <p>Phase I is a look. Phase II is limited intrusion. Phase III is the full subsurface investigation. Erin does not linger in Phase I. She is a scientist.</p>
+          </article>
+          <article class="card">
+            <p class="code">DEV-03 · Hydrogeology</p>
+            <h3>Groundwater Special</h3>
+            <p>She locates the water table, then continues. Depth is not a problem. Confined aquifers, unconfined audiences, same methodology.</p>
+          </article>
+          <article class="card">
+            <p class="code">DEV-04 · Regulatory</p>
+            <h3>Environmental Permitting</h3>
+            <p>CEQA, NEPA, and whatever you were hoping nobody would notice. If it requires a permit, she will obtain one. If it does not, she will still make it look permitted.</p>
+          </article>
+          <article class="card">
+            <p class="code">DEV-05 · Controls</p>
+            <h3>Project Control</h3>
+            <p>Schedule. Budget. Scope. Your composure. Novaterra pays her to keep projects from slipping. You may retain the same skill set by the hour.</p>
+          </article>
+          <article class="card">
+            <p class="code">DEV-06 · Provenance</p>
+            <h3>The El Dorado Package</h3>
+            <p>Gold country hospitality from a woman who has already found the vein. Strike it rich. Leave the overburden on the chair.</p>
+          </article>
+          <article class="card">
+            <p class="code">DEV-07 · Marine</p>
+            <h3>UCSB Shoreline Engagement</h3>
+            <p>Marine science is not a personality. It is a credential. Wet work available. Tide tables included. Please do not ask about the core samples.</p>
+          </article>
+          <article class="card">
+            <p class="code">DEV-08 · Metamorphic</p>
+            <h3>Pressure & Heat</h3>
+            <p>Schist happens. Erin was trained on rock that survived burial, baking, and being looked at by undergraduates. She can handle your room.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <div class="service-card">
-      <div class="icon">🌊</div>
-      <h3>Marine Science Special</h3>
-      <p>UCSB Marine Science & Geology degree. I can do this underwater if that's your thing. Tide charts included.</p>
-    </div>
+    <section class="letter" id="credentials">
+      <div class="wrap">
+        <p class="section-label" style="color:#cbb894">A note from the principal</p>
+        <h2>I play with rocks. Professionally.</h2>
+        <p>When people ask what I do, I tell them I am a geologist. That is true. The more complete answer is that I remove what is covering the interesting part, I write it down, and I do not blush.</p>
+        <p>I took my master’s at UC Santa Barbara in marine science and geology. I have been a geologist at Parsons, a staff scientist at Conestoga-Rovers, and a person who made environmental consultants at SWCA look organized. I have also done time in the El Dorado County Office of Education, which is how I learned that adults require more supervision than children.</p>
+        <p>By day I am Project Control Coordinator at Novaterra Biological Consulting. I keep the work on budget, on schedule, and inside the permit. By night I apply the same standards to a slightly less regulatory audience.</p>
+        <p>I have been stripping formations since 2003. The tools have changed. The cleavage has not.</p>
+        <div class="signoff">
+          <b>Erin DeVine, M.S.</b>
+          Principal Geologist · DeVine Exposures
+        </div>
+      </div>
+    </section>
 
-  </div>
-</section>
+    <section>
+      <div class="wrap">
+        <p class="section-label">Curriculum vitae, abbreviated</p>
+        <h2>Selected experience.</h2>
+        <dl class="cv">
+          <dt>Education</dt>
+          <dd>M.S., Marine Science & Geology, University of California, Santa Barbara, 2003–2006. Thesis defense was clothed. Subsequent work need not be.</dd>
+          <dt>Present</dt>
+          <dd>Project Control Coordinator, Novaterra Biological Consulting. She will not be late. Do not be late.</dd>
+          <dt>Prior</dt>
+          <dd>Geologist, Parsons. Staff Scientist, Conestoga-Rovers & Associates. SWCA Environmental Consultants. El Dorado County Office of Education.</dd>
+          <dt>Specialties</dt>
+          <dd>Geology, groundwater, environmental permitting, environmental compliance, impact assessment, and making a room go very quiet.</dd>
+          <dt>Licensure</dt>
+          <dd>Joke licenses only: P.G. (Provocative Geologist), C.E.G. (Certified Exposed Geologist), QSD (Quite Seductive, Darling).</dd>
+        </dl>
+      </div>
+    </section>
 
-<!-- ABOUT -->
-<section class="section">
-  <h2>About Me</h2>
-  <div class="about-box">
-    <p>
-      What's a girl gotta do to get a break in this town? Literally — I work in fault lines for a living.
+    <section id="retainers">
+      <div class="wrap">
+        <p class="section-label">Standard retainers</p>
+        <h2>Investment, not cover charge.</h2>
+        <p class="intro">Quoted in professional courtesy rather than dollars, because putting a price on a UCSB master’s would be vulgar. Venmo is still vulgar. We accept it anyway.</p>
+        <table class="retainers">
+          <thead>
+            <tr><th>Engagement</th><th>Scope</th><th>Duration</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="name">Desktop Review</div><div class="desc">Phase I. Eyes only. No samples collected.</div></td>
+              <td>A look across the room that counts as due diligence.</td>
+              <td>5 min</td>
+            </tr>
+            <tr>
+              <td><div class="name">Limited Intrusion</div><div class="desc">Phase II. Targeted. Documented. Unforgettable.</div></td>
+              <td>Cleavage characterization with field notes.</td>
+              <td>12 min</td>
+            </tr>
+            <tr>
+              <td><div class="name">Full Subsurface</div><div class="desc">Phase III. The competent layer, at last.</div></td>
+              <td>Complete stratigraphic peel. QA/QC included.</td>
+              <td>20 min</td>
+            </tr>
+            <tr>
+              <td><div class="name">Project Controls</div><div class="desc">Private engagement. She keeps the clock.</div></td>
+              <td>You had a plan. She is the plan now.</td>
+              <td>By retainer</td>
+            </tr>
+            <tr>
+              <td><div class="name">Corporate Lunch-and-Learn</div><div class="desc">OSHA-adjacent. HR will have questions.</div></td>
+              <td>Team-building through geologic appreciation.</td>
+              <td>Half day</td>
+            </tr>
+            <tr>
+              <td><div class="name">Bachelorette Protocol</div><div class="desc">The last geologist she will ever need.</div></td>
+              <td>Gold-country hospitality. No recovery plan.</td>
+              <td>Evening</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="remarks">
+      <div class="wrap">
+        <p class="section-label">Client remarks</p>
+        <h2>Peer review, of a sort.</h2>
+        <div class="quotes">
+          <blockquote>
+            “Her QA/QC is impeccable. So is her Q.”
+            <footer>Former Parsons project manager, speaking off the record</footer>
+          </blockquote>
+          <blockquote>
+            “I asked for a boring log. I received a boring log. I also received something that was not boring.”
+            <footer>Anonymous hydrogeologist, still in the field</footer>
+          </blockquote>
+          <blockquote>
+            “She said chain of custody and I handed her my drink. Correct protocol, in hindsight.”
+            <footer>Guest, private engagement, El Dorado County</footer>
+          </blockquote>
+          <blockquote>
+            “I came for the CEQA briefing. I left with a new understanding of overburden.”
+            <footer>Compliance officer, now in recovery</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="book" id="book">
+      <div class="wrap">
+        <p class="section-label">Engagements</p>
+        <h2>Do not let your next event remain unexplored.</h2>
+        <p>Erin brings the science, the schedule, and the cleavage. You bring a room that can handle a woman who has already seen the basement of California.</p>
+        <a class="btn" href="mailto:erin@example.invalid?subject=Private%20geologic%20engagement">Request a private engagement</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="wrap">
+    <p class="fine">
+      This is a joke website made by a friend. Erin DeVine is a real geologist. She does real environmental work. She is not offering stripping services, geologic or otherwise, via this page. No emails were harvested, no phone numbers listed, no clients exist. If you are Erin: this is affection, in poor taste, with good type.
+      <br><br>
+      Prepared with a rock hammer by Steven. Not affiliated with Novaterra, Parsons, SWCA, UCSB, or any competent regulatory agency.
     </p>
-    <br>
-    <p>
-      I've got an MS in Marine Science and Geology from UCSB, I've worked at Parsons, and I'm currently at Novaterra Biological Consulting where I coordinate projects that expose the truth about the earth. I've spent my career taking things apart layer by layer, documenting what's underneath, and making sure nobody cuts corners on the important stuff.
-    </p>
-    <br>
-    <p>
-      But let's be real — I've been stripping rock formations since 2003. It's the same skill set. Just different rocks. And a different audience. And honestly? The audience here is way more appreciative.
-    </p>
-    <br>
-    <p>
-      <strong>Education:</strong> UC Santa Barbara — MS Marine Science & Geology (2003–2006)<br>
-      <strong>Experience:</strong> Parsons, Novaterra Biological Consulting<br>
-      <strong>Specialties:</strong> Geology, Groundwater, Environmental Permitting, Stratigraphy, Sedimentology<br>
-      <strong>Availability:</strong> Weekends, nights, and any event that needs a real professional
-    </p>
+    <footer class="site">
+      <span>DeVine Exposures · 2026</span>
+      <span>Shingle Springs is not printed on the invoices</span>
+      <span>Just kidding, Erin</span>
+    </footer>
   </div>
-</section>
-
-<!-- PRICING -->
-<section class="section">
-  <h2>Rates</h2>
-  <table class="pricing-table">
-    <tr><td>Single Dance (5 min)</td><td>One rock star performance</td></tr>
-    <tr><td>Cleavage Special (10 min)</td><td>Layer-by-layer exposure</td></tr>
-    <tr><td>Full Stratigraphic Set (20 min)</td><td>Complete geological survey</td></tr>
-    <tr><td>Private Party</td><td>Custom tectonic experience</td></tr>
-    <tr><td>Corporate Event</td><td>Team building through geological appreciation</td></tr>
-    <tr><td>Bachelorette Package</td><td>The last time she'll ever need a real geologist</td></tr>
-  </table>
-</section>
-
-<!-- REVIEWS -->
-<section class="section">
-  <h2>What People Say</h2>
-  <div class="reviews">
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p>"I've seen a lot of field sites, but nothing exposed me like Erin's performance."</p>
-      <div class="author">— Anonymous Site Supervisor</div>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p>"She analyzed my party's cleavage situation in under 3 minutes. 10/10 would recommend."</p>
-      <div class="author">— Happy Client, Bachelorette Party</div>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p>"Finally, someone who understands that the best things come in layers."</p>
-      <div class="author">— Former Colleague, Now Fan</div>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p>"I came for the geology. I stayed for the tectonic twerking. I left with a new perspective on sedimentary rock."</p>
-      <div class="author">— Confessed Party Guest</div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section" style="text-align: center; padding-top: 3rem;">
-  <h2>Book Now</h2>
-  <p style="color: #b8a9c9; margin-bottom: 2rem; font-size: 1.1rem;">
-    Don't let your next event go unexplored.<br>
-    Erin brings the science. You bring the stage.
-  </p>
-  <a href="#" class="cta-button">🪨 Book Erin Today 🪨</a>
-</section>
-
-<!-- DISCLAIMER -->
-<div class="disclaimer">
-  <p>
-    This is a joke website created for entertainment purposes. Erin Devine is a real geologist who deserves respect for her actual professional work.
-    No actual stripping services are offered or implied. Please tip your real geologists — they're the real rock stars.
-    <br><br>
-    Made with 💜 and a hammer by Erin's friend Steven
-  </p>
-</div>
-
-<footer>
-  © 2026 Erin Devine Geologic Stripping Services™ — All Rights Reserved (Just Kidding, Erin)
-</footer>
-
 </body>
 </html>

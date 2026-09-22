@@ -3,281 +3,464 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Lost in My Orogenous Zone — The Novel</title>
+<title>Get Lost in My Orogenous Zone — Erin DeVine</title>
+<meta name="description" content="Get Lost in My Orogenous Zone — a novel by Erin DeVine. The El Dorado Cycle, Book One.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0708;
-    --card: #141012;
-    --ink: #f6e7d8;
-    --muted: #b79a8a;
-    --hot: #e35d7a;
-    --gold: #e0b56a;
-    --line: rgba(227, 93, 122, 0.28);
+    --bg: #faf8f5;
+    --ink: #1a1a1a;
+    --muted: #6b6560;
+    --accent: #8b2035;
+    --accent-deep: #6b1828;
+    --line: #e2ddd6;
+    --card: #ffffff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: Syne, system-ui, sans-serif;
+    font-family: Inter, system-ui, sans-serif;
     background: var(--bg);
     color: var(--ink);
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(800px 400px at 15% 0%, rgba(227,93,122,.22), transparent 55%),
-      radial-gradient(700px 380px at 90% 10%, rgba(224,181,106,.12), transparent 50%);
-    z-index: -1;
-  }
-  a { color: var(--gold); text-decoration: none; }
-  .wrap { width: min(1040px, calc(100% - 2rem)); margin: 0 auto; }
-  .bar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 1.4rem;
-    border-bottom: 1px solid var(--line);
-    font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
-  }
-  .bar a { color: var(--ink); }
-  .bar a:hover { color: var(--gold); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-  /* BOOK COVER */
-  .cover-section { padding: 3rem 0 2rem; text-align: center; }
+  /* NAV */
+  .top-bar {
+    background: var(--ink);
+    color: #fff;
+    padding: .7rem 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .top-bar a { color: #fff; }
+  .top-bar a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 2.5rem;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .cover-wrap {
+    position: relative;
+  }
   .cover {
-    display: inline-block;
-    background: linear-gradient(165deg, #6b1830, #2c0b16 55%, #12060a);
-    border: 2px solid var(--gold);
-    padding: 2.5rem 2rem;
-    max-width: 340px;
-    box-shadow: 0 30px 60px rgba(0,0,0,.5);
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background: linear-gradient(160deg, #8b2035, #4a0e1c 60%, #2a0810);
+    border: 1px solid #c8a87a;
+    box-shadow: 0 20px 50px rgba(0,0,0,.25), inset 0 0 80px rgba(0,0,0,.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(200,168,122,.15), transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(200,168,122,.08), transparent 50%);
+    pointer-events: none;
   }
   .cover .series {
-    letter-spacing: .22em; text-transform: uppercase; font-size: .65rem;
-    color: var(--gold); margin-bottom: 1rem;
+    font-size: .6rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: #c8a87a;
+    margin-bottom: 1.2rem;
   }
   .cover h2 {
     font-family: "Cormorant Garamond", serif;
-    font-size: 2.2rem; font-weight: 700; line-height: 1.1;
-    color: #f8e7c8; margin-bottom: .6rem;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #f5e8d0;
+    line-height: 1.1;
+    margin-bottom: .5rem;
   }
   .cover .sub {
-    font-family: "Cormorant Garamond", serif; font-style: italic;
-    color: #e8c9a0; font-size: 1rem; margin-bottom: 1.2rem;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: #d4b896;
+    font-size: .95rem;
+    margin-bottom: 1rem;
   }
-  .cover .by {
-    letter-spacing: .16em; text-transform: uppercase; font-size: .7rem;
-    color: var(--gold);
+  .cover .author {
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #c8a87a;
+  }
+  .book-meta {
+    margin-top: 1rem;
+    font-size: .72rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1.8;
   }
 
-  /* HERO */
-  .hero { padding: 2rem 0 3rem; text-align: center; }
-  .hero h1 {
+  .hero-content .kicker {
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  h1 {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(2.4rem, 6vw, 4.5rem);
-    font-weight: 600; line-height: 1; margin-bottom: .6rem;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: .5rem;
   }
-  .hero h1 em { display: block; font-size: .32em; color: var(--gold); letter-spacing: .08em; margin-top: .4rem; font-weight: 400; }
-  .lede {
-    max-width: 38rem; margin: 1rem auto 0;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-    color: #f0d2c2;
+  .author-line {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
   }
-  .cta {
-    display: inline-block; margin-top: 1.6rem;
-    background: var(--hot); color: #1a0a0e;
-    letter-spacing: .16em; text-transform: uppercase;
-    font-size: .78rem; font-weight: 700; padding: .95rem 1.3rem;
+  .author-line strong { color: var(--ink); }
+  .blurb {
+    font-size: .98rem;
+    color: var(--muted);
+    max-width: 44rem;
+    line-height: 1.7;
   }
-  .cta:hover { background: var(--gold); }
+  .blurb p { margin-bottom: .8rem; }
 
-  /* MARQUEE */
-  .marquee {
-    overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    padding: .85rem 0; color: var(--gold); letter-spacing: .18em;
-    text-transform: uppercase; font-size: .72rem; white-space: nowrap;
+  .btn-row {
+    display: flex;
+    gap: .8rem;
+    margin-top: 1.6rem;
+    flex-wrap: wrap;
   }
-  .marquee span { display: inline-block; animation: slide 28s linear infinite; }
-  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .btn {
+    display: inline-block;
+    padding: .7rem 1.3rem;
+    font-size: .75rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent-deep); text-decoration: none; }
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .btn-outline:hover { background: var(--accent); color: #fff; text-decoration: none; }
 
   /* SECTIONS */
-  section { padding: 3.5rem 0; }
+  section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+  .section-label {
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .4rem;
+  }
   h2 {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(2rem, 4.5vw, 3rem);
-    font-weight: 600; margin-bottom: .5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
   }
-  .kicker { color: var(--hot); letter-spacing: .2em; text-transform: uppercase; font-size: .7rem; margin-bottom: .4rem; }
-  .intro { color: var(--muted); max-width: 40rem; margin-bottom: 1.6rem; }
-
-  /* SYNOPSIS */
-  .synopsis {
-    background: var(--card); border: 1px solid var(--line);
-    padding: 2rem 1.8rem; border-radius: 4px;
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin: 0 0 2rem;
   }
-  .synopsis p { font-family: "Cormorant Garamond", serif; font-size: 1.22rem; line-height: 1.55; color: #f0d2c2; margin-bottom: .9rem; }
 
-  /* TROPES */
-  .tropes { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.4rem; }
-  .tropes span {
-    border: 1px solid var(--hot); color: var(--hot);
-    padding: .25rem .6rem; font-size: .68rem;
-    letter-spacing: .12em; text-transform: uppercase;
+  /* PRAISE */
+  .praise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  .praise-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.3rem;
+  }
+  .praise-card blockquote {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .praise-card footer {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: .7rem;
   }
 
   /* CHAPTERS */
-  .chapters { list-style: none; margin-top: 1.4rem; }
-  .chapters li {
-    padding: .65rem 0; border-bottom: 1px solid var(--line);
-    font-family: "Cormorant Garamond", serif; font-size: 1.15rem;
-    color: #f0d2c2;
+  .chapters-list {
+    list-style: none;
+    counter-reset: ch;
   }
-  .chapters li em { color: var(--gold); font-style: normal; font-size: .85rem; }
+  .chapters-list li {
+    counter-increment: ch;
+    padding: .7rem 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+  }
+  .chapters-list li::before {
+    content: counter(ch, decimal-leading-zero);
+    font-family: Inter, sans-serif;
+    font-size: .75rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: .08em;
+    min-width: 1.8rem;
+  }
+  .chapters-list li em {
+    font-family: Inter, sans-serif;
+    font-size: .78rem;
+    font-style: italic;
+    color: var(--muted);
+  }
 
-  /* REVIEWS */
-  .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.4rem; }
-  blockquote {
-    background: var(--card); border: 1px solid var(--line);
-    padding: 1.3rem; font-family: "Cormorant Garamond", serif;
-    font-size: 1.25rem; font-style: italic; color: #f0d2c2;
+  /* ABOUT AUTHOR */
+  .about-author {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 2.2rem;
   }
-  blockquote footer {
-    font-family: Syne, sans-serif; font-style: normal;
-    font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--hot); margin-top: .8rem;
+  .about-author p {
+    font-size: .95rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: .8rem;
+  }
+  .about-author strong { color: var(--ink); }
+
+  /* SERIES */
+  .series-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .series-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .series-card .num {
+    font-size: .65rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .4rem;
+  }
+  .series-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.2rem;
+    margin-bottom: .3rem;
+  }
+  .series-card p {
+    font-size: .8rem;
+    color: var(--muted);
   }
 
-  /* BLURB CARD */
-  .blurb-card {
-    background: linear-gradient(180deg, rgba(227,93,122,.08), transparent);
-    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    padding: 3rem 0;
+  /* FOOTER */
+  .fine {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 2.5rem;
+    color: var(--muted);
+    font-size: .78rem;
+    line-height: 1.65;
+    border-top: 1px solid var(--line);
   }
-  .blurb-card p {
-    font-family: "Cormorant Garamond", serif; font-size: 1.28rem;
-    color: #f0d2c2; margin-bottom: 1rem;
+  footer.site {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    color: var(--muted);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
   }
-  .blurb-card strong { color: var(--gold); }
 
-  /* FINE PRINT */
-  .fine { color: #7d655c; font-size: .78rem; padding: 2rem 0 2.5rem; line-height: 1.65; }
-  footer.site { color: #7d655c; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding-bottom: 2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   @media (max-width: 760px) {
-    .quotes { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .cover-wrap { max-width: 220px; margin: 0 auto; }
+    .btn-row { justify-content: center; }
+    .praise-grid, .series-cards { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-  <div class="bar">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
     <a href="./">← DeVine</a>
-    <span>DeVine Press · Book One · El Dorado Cycle</span>
+    <span>The El Dorado Cycle · Book One</span>
   </div>
 
-  <div class="cover-section">
-    <div class="cover">
-      <p class="series">The El Dorado Cycle</p>
-      <h2>Get Lost in My Orogenous Zone</h2>
-      <p class="sub">A Novel</p>
-      <p class="by">Erin DeVine, M.S.<br>as told to the mountains</p>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="cover-wrap">
+      <div class="cover">
+        <p class="series">The El Dorado Cycle</p>
+        <h2>Get Lost in My Orogenous Zone</h2>
+        <p class="sub">A Novel</p>
+        <p class="author">Erin DeVine</p>
+      </div>
+      <div class="book-meta">
+        ISBN 978-0-999999-00-1<br>
+        Paperback · 312 pages<br>
+        $16.99 · eBook $9.99<br>
+        <span style="color:#c8a87a;">Available nowhere</span>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <p class="kicker">Coming Never · Already Too Much</p>
+      <h1>Get Lost in My Orogenous Zone</h1>
+      <p class="author-line">by <strong>Erin DeVine, M.S.</strong></p>
+      <div class="blurb">
+        <p>Erin DeVine came to El Dorado County to keep projects on schedule. She had an M.S. from UC Santa Barbara, a clipboard from Novaterra, and absolutely no patience for men who thought "cleavage" was a compliment.</p>
+        <p>Then a rugged stranger asked what she did for a living. She said she stripped the earth. He said prove it. She said get lost in an orogenous zone.</p>
+        <p>He did.</p>
+        <p>Now the mountains are rising, the overburden is coming off, and the only thing more unstable than the slope is the man who followed her into the range. There is one tent. One competent layer. And a geologist who has been taking it off — professionally — since 2003.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="./">← Back to DeVine</a>
+        <a class="btn btn-outline" href="#praise">Praise</a>
+        <a class="btn btn-outline" href="#chapters">Chapters</a>
+      </div>
     </div>
   </div>
 
-  <div class="hero wrap">
-    <h1>She told him to get lost.<br>He packed a tent.<em>And a really nice hand lens.</em></h1>
-    <p class="lede">UCSB-trained. Full-service. She takes it off — scientifically. He is not qualified to say no.</p>
-    <a class="cta" href="./">Read the main site</a>
-  </div>
-
-  <div class="marquee">
-    <span> ★ Only one tent ★ Grumpy / granite ★ Forced proximity ★ She has a master's ★ He has a fault ★ Open door, closed basin ★ The oldest profession, plus a degree ★ Hard hat optional ★ Get lost in an orogenous zone ★ Only one tent ★ Grumpy / granite ★ Forced proximity ★ She has a master's ★ He has a fault ★ Open door, closed basin ★ The oldest profession, plus a degree ★ Hard hat optional ★ Get lost in an orogenous zone ★ </span>
-  </div>
-
-  <section class="wrap">
-    <p class="kicker">Blurb</p>
-    <h2>The synopsis that should not be read aloud at work.</h2>
-    <div class="synopsis">
-      <p>Erin DeVine came to El Dorado County to keep projects on schedule. She had an M.S. from UCSB, a clipboard from Novaterra, and absolutely no patience for men who thought "cleavage" was a compliment.</p>
-      <p>Then a rugged stranger asked what she did for a living. She said she stripped the earth. He said prove it. She said <strong>get lost in an orogenous zone</strong>.</p>
-      <p>He did.</p>
-      <p>Now the mountains are rising, the overburden is coming off, and the only thing more unstable than the slope is the man who followed her into the range. There is one tent. One competent layer. And a geologist who has been taking it off — professionally — since 2003.</p>
-      <p><strong>Warning:</strong> This novel contains plate tectonics, groundwater talk, a supply-closet scene that should not be quoted in any peer-reviewed journal, and a heroine who can identify foliation and ruin you in the same sentence.</p>
-    </div>
-    <div class="tropes">
-      <span>Only one tent</span>
-      <span>Grumpy / granite</span>
-      <span>Forced proximity (the range)</span>
-      <span>She has a master's</span>
-      <span>He has a fault</span>
-      <span>Open door, closed basin</span>
-      <span>Competent layer reached</span>
-      <span>She talks dirty about aquifers</span>
+  <!-- PRAISE -->
+  <section id="praise">
+    <p class="section-label">Critical Acclaim</p>
+    <h2>Praise</h2>
+    <div class="divider"></div>
+    <div class="praise-grid">
+      <div class="praise-card">
+        <blockquote>"If Jane Austen had a rock hammer and worse intentions."</blockquote>
+        <footer>Kirkus Reviews, probably fired</footer>
+      </div>
+      <div class="praise-card">
+        <blockquote>"I started this for the plate tectonics. I finished it in the bathtub. I am not proud."</blockquote>
+        <footer>A hydrogeologist's wife</footer>
+      </div>
+      <div class="praise-card">
+        <blockquote>"Finally, a heroine who can identify foliation and ruin a man in the same sentence."</blockquote>
+        <footer>Romance Times, El Dorado Edition</footer>
+      </div>
+      <div class="praise-card">
+        <blockquote>"The scene in the Novaterra supply closet is why we have permits."</blockquote>
+        <footer>Anonymous Project Controls Professional</footer>
+      </div>
     </div>
   </section>
 
-  <section class="wrap">
-    <p class="kicker">Chapter list</p>
-    <h2>Eight chapters. Eight layers. All of them hot.</h2>
-    <ol class="chapters">
-      <li>1. A Master's from Santa Barbara, and Other Dangerous Things</li>
-      <li>2. He Called It Cleavage. She Handed Him a Stereonet.</li>
-      <li>3. Get Lost in an Orogenous Zone <em>(the inciting incident)</em></li>
-      <li>4. In Which the Overburden Comes Off <em>(slow peel)</em></li>
-      <li>5. Only One Tent, and It Is Rated for Snow, Not This <em>(forced proximity)</em></li>
-      <li>6. Project Control After Dark <em>(the supply-closet scene)</em></li>
-      <li>7. The Competent Layer, Reached at Last <em>(the climax)</em></li>
-      <li>8. Happily Faulted Ever After <em>(epilogue: well logs in the morning)</em></li>
+  <!-- CHAPTERS -->
+  <section id="chapters">
+    <p class="section-label">Table of Contents</p>
+    <h2>Chapters</h2>
+    <div class="divider"></div>
+    <ol class="chapters-list">
+      <li>A Master's from Santa Barbara, and Other Dangerous Things</li>
+      <li>He Called It Cleavage. She Handed Him a Stereonet.</li>
+      <li>Get Lost in an Orogenous Zone</li>
+      <li>In Which the Overburden Comes Off</li>
+      <li>Only One Tent, and It Is Rated for Snow, Not This</li>
+      <li>Project Control After Dark</li>
+      <li>The Competent Layer, Reached at Last</li>
+      <li>Happily Faulted Ever After</li>
     </ol>
   </section>
 
-  <section class="blurb-card">
-    <div class="wrap">
-      <p class="kicker">About the author</p>
-      <h2>Erin DeVine, M.S.</h2>
-      <p>Erin DeVine holds a Master's in Marine Science and Geology from UC Santa Barbara. She has been a geologist at Parsons, a staff scientist at Conestoga-Rovers, and a person who kept SWCA Environmental Consultants organized.</p>
-      <p>She currently works as Project Control Coordinator at Novaterra Biological Consulting, where she keeps projects on budget, on schedule, and inside the permit.</p>
-      <p>When she is not taking rocks' clothes off for a living, she writes romance novels about geologists. She is currently working on Book Two: <strong>Strike It Rich (in the Alluvium)</strong>.</p>
-      <p>She lives in El Dorado County, where the gold is real, the cleavage is geological, and the men are all overburden.</p>
+  <!-- SERIES -->
+  <section>
+    <p class="section-label">The El Dorado Cycle</p>
+    <h2>Upcoming Titles</h2>
+    <div class="divider"></div>
+    <div class="series-cards">
+      <div class="series-card">
+        <p class="num">Book Two</p>
+        <h3>Strike It Rich (in the Alluvium)</h3>
+        <p>Coming never. Also never.</p>
+      </div>
+      <div class="series-card">
+        <p class="num">Book Three</p>
+        <h3>Sedimentary, My Dear Watson</h3>
+        <p>In development. Fictional.</p>
+      </div>
     </div>
   </section>
 
-  <section class="wrap">
-    <p class="kicker">Praise</p>
-    <h2>Reviews that should have been banned.</h2>
-    <div class="quotes">
-      <blockquote>
-        "If Jane Austen had a rock hammer and worse intentions."
-        <footer>Kirkus Reviews, probably fired</footer>
-      </blockquote>
-      <blockquote>
-        "I started this for the plate tectonics. I finished it in the bathtub. I am not proud."
-        <footer>A hydrogeologist's wife</footer>
-      </blockquote>
-      <blockquote>
-        "Finally, a heroine who can identify foliation and ruin a man in the same sentence."
-        <footer>Romance Times, El Dorado edition</footer>
-      </blockquote>
-      <blockquote>
-        "The scene in the Novaterra supply closet is why we have permits."
-        <footer>Anonymous project controls professional</footer>
-      </blockquote>
+  <!-- ABOUT -->
+  <section>
+    <p class="section-label">About the Author</p>
+    <h2>Erin DeVine, M.S.</h2>
+    <div class="divider"></div>
+    <div class="about-author">
+      <p>Erin DeVine holds a Master's in Marine Science and Geology from UC Santa Barbara. She has worked as a geologist at Parsons, a staff scientist at Conestoga-Rovers & Associates, and a person who kept SWCA Environmental Consultants organized.</p>
+      <p>She currently serves as Project Control Coordinator at Novaterra Biological Consulting, where she keeps projects on budget, on schedule, and inside the permit.</p>
+      <p>When she is not stripping the earth for a living, she writes romance novels about geologists. She lives in El Dorado County, where the gold is real, the cleavage is geological, and the men are all overburden.</p>
     </div>
   </section>
 
-  <div class="wrap">
-    <p class="fine">
-      This is a fake book advertisement for a fake book about a real geologist, made as a joke. Erin DeVine did not write this, star in this, or consent to a supply-closet chapter. There is no preorder. There is no tent. There is, however, an orogenous zone, and you were told to get lost in it.
-      <br><br>
-      Made by her friend Steven, who should not be allowed near a rock hammer or a typeface.
-    </p>
-    <footer class="site">
-      <span>DeVine Press · El Dorado Cycle · 2026</span>
-      <span>Just kidding, Erin</span>
-    </footer>
-  </div>
+  <!-- FINE -->
+  <p class="fine">
+    This is a fake book advertisement for a fake book about a real geologist, made as a joke. Erin DeVine did not write this, star in this, or consent to a supply-closet chapter. There is no preorder. There is no ISBN. There is, however, an orogenous zone, and you were told to get lost in it.
+    <br><br>
+    Made by her friend Steven, who should not be allowed near a rock hammer or a typeface.
+  </p>
+  <footer class="site">
+    <span>DeVine Press · El Dorado Cycle · 2026</span>
+    <span>Just kidding, Erin</span>
+  </footer>
+
 </body>
 </html>
